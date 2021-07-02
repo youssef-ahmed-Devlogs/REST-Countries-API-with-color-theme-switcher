@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./components/views/Home";
+import Header from "./components/Header";
+import SingleRegion from "./components/views/SingleRegion";
+import {RegionsProvider} from "./context/RegionsContext";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RegionsProvider>
+      <div className="App">
+        <Header/>
+        <BrowserRouter>
+          <Route path="/" exact component={Home} />
+          <Route path="/region/:name" exact component={SingleRegion} />
+        </BrowserRouter>
+      </div>
+    </RegionsProvider>
+   
   );
 }
 
