@@ -14,7 +14,18 @@ const Search = () => {
 
   const handelSearch = (name) => {
     axios.get(`https://restcountries.eu/rest/v2/name/${name}`).then((res) => {
-      setRegions(res.data);
+      const result = res.data.map((reg) => {
+        if (reg.population === 8527400) {
+          reg.name = "Palestine, State of";
+          reg.flag =
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Palestine_Flag.svg/1200px-Palestine_Flag.svg.png";
+          reg.population = 4682467;
+          reg.capital = "alquds";
+          return reg;
+        }
+        return reg;
+      });
+      setRegions(result);
     });
   };
 

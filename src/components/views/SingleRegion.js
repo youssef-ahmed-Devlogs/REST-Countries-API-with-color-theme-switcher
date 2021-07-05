@@ -10,8 +10,19 @@ const SingleRegion = (props) => {
     axios
       .get(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`)
       .then((res) => {
-        setRegion(res.data);
-        console.log(res.data);
+        // Israel is not a country
+        const result = res.data.map((reg) => {
+          if (reg.population === 8527400) {
+            reg.name = "Palestine, State of";
+            reg.flag =
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Palestine_Flag.svg/1200px-Palestine_Flag.svg.png";
+            reg.population = 4682467;
+            reg.capital = "alquds";
+            return reg;
+          }
+          return reg;
+        });
+        setRegion(result);
       });
   };
 
