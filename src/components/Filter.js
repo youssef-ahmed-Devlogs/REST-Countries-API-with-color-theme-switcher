@@ -18,6 +18,11 @@ const Filter = () => {
           reg.capital = "alquds";
           return reg;
         }
+
+        if (reg.population === 4682467) {
+          reg.capital = "alquds";
+        }
+
         return reg;
       });
       setRegions(result);
@@ -34,6 +39,11 @@ const Filter = () => {
           reg.capital = "alquds";
           return reg;
         }
+
+        if (reg.population === 4682467) {
+          reg.capital = "alquds";
+        }
+
         return reg;
       });
       setRegions(result);

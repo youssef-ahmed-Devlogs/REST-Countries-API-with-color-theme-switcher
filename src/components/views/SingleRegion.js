@@ -20,6 +20,11 @@ const SingleRegion = (props) => {
             reg.capital = "alquds";
             return reg;
           }
+
+          if (reg.population === 4682467) {
+            reg.capital = "alquds";
+          }
+
           return reg;
         });
         setRegion(result);
